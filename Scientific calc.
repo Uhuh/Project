@@ -1,0 +1,142 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main()
+{
+    const int BASE10 = 10;
+    short choiceTwo;
+    double answer;
+    bool B10 = false, sCalc = true;
+    double sciResult, logOf, base, expo, logBase;
+    short choices;
+    double value1, value2, result;
+    cout << "\nCALCULATOR\nDylan Warren";
+    while(true){
+        cout << "\n\n--------------------"
+                "\n1. Add\n" <<
+                "2. Subtract\n" <<
+                "3. Divide\n" <<
+                "4. Multiply\n" <<
+                "5. Scientific calculator.\n" <<
+                "6. Exit\n" <<
+                "--------------------" <<
+                "\nWhat would you like to do?(1-6): ";
+                cin >> choices;
+        if(choices==6)
+            {
+                break;
+            }
+
+        switch(choices)
+        {
+        case 1:
+            cout << "Enter the first value: ";
+            cin >> value1;
+            cout << "Enter the second value: ";
+            cin >> value2;
+            cout << "The solution is: ";
+            result = value1 + value2;
+            answer = result;
+            cout << value1 << "+" << value2 << "=" << result;
+            break;
+        case 2:
+            cout << "Enter the first value: ";
+            cin >> value1;
+            cout << "Enter the second value: ";
+            cin >> value2;
+            cout << "The solution is: ";
+            result = value1 - value2;
+            answer = result;
+            cout << value1 << "-" << value2 << "=" << result;
+            break;
+        case 3:
+            cout << "Enter the first value: ";
+            cin >> value1;
+            cout << "Enter the second value: ";
+            cin >> value2;
+            cout << "The solution is: ";
+            result = value1 / value2;
+            answer = result;
+            cout << value1 << "/" << value2 << "=" << result;
+            break;
+        case 4:
+            cout << "Enter the first value: ";
+            cin >> value1;
+            cout << "Enter the second value: ";
+            cin >> value2;
+            cout << "The solution is: ";
+            result = value1 * value2;
+            answer = result;
+            cout << value1 << "*" << value2 << "=" << result;
+            break;
+        default:
+            cout << "\nInvalid input, please enter a numeric value(1-2-3, etc)" << endl;
+        case 5:
+            while(sCalc)
+            {
+                cout << "\n\n------------------------------"
+                << "\nMenu for scientific calculator" << endl << endl
+                << "1. Exponent(power)."
+                << "\n2. Root."
+                << "\n3. Logs."
+                << "\n4. Basic Calculator."
+                << "\n------------------------------" << endl
+                << "What would you like to do?(1-4): ";
+                cin >> choiceTwo;
+                if (choiceTwo==4)
+                {
+                    break;
+                }
+                switch(choiceTwo)
+                {
+                    case 1:
+                        cout << "\nPlease enter the number being raised to a power: " << endl;
+                        cin >> base;
+                        cout << "\nNow please enter the exponent(power): ";
+                        cin >> expo;
+                        sciResult = pow(base, expo);
+                        answer = sciResult;
+                        cout << "The result of " << base << " raised to " << expo << " is: " << sciResult << "." << endl;
+                        break;
+                    case 2:
+                        cout << "\nPlease enter the root(2-square, 3-cubic, etc): ";
+                        cin >> expo;
+                        cout << "\nPlease enter the base number: ";
+                        cin >> base;
+                        sciResult = pow(base, 1/expo);
+                        answer = sciResult;
+                        cout << "The root of " << base << " is: " << sciResult << "." << endl;
+                        break;
+                    case 3:
+                        cout << "\nIs it base 10?(1-Yes, 0-No): ";
+                        cin >> B10;
+                        if(B10)
+                        {
+                            cout << "\nLn(Base 10) of what number?: ";
+                            cin >> logOf;
+                            sciResult = log(logOf)/log(10);
+                            answer = sciResult;
+                            cout << "The result of Ln " << logOf << " is: " << sciResult << "." << endl;
+                            B10 = false;
+                        }
+                        else
+                        {
+                            cout << "\nPlease enter the base: ";
+                            cin >> logBase;
+                            cout << "\nLog(" << logBase << ") of what number?: ";
+                            cin >> logOf;
+                            sciResult = (log(logOf)/log(logBase));
+                            answer = sciResult;
+                            cout << endl << sciResult;
+                        }
+                        break;
+                    default:
+                        cout << "\nInvalid input please try again using numeric values.(1-2-3)" << endl;
+
+                }
+            }
+        }
+    }
+    cout << "\aGoodbye and thank you for using this calculator!" << endl;
+    return 0;
+}
