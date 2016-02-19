@@ -4,29 +4,27 @@ using namespace std;
 int main()
 {
     const int BASE10 = 10;
-    short choiceTwo;
+    short choiceTwo, trigChoice;
     double answer;
-    bool B10 = false, sCalc = true;
+    bool B10 = false, sCalc = true, trigCalc = true;
     double sciResult, logOf, base, expo, logBase;
     short choices;
-    double value1, value2, result;
+    double value1, value2, result, trigResult, trigValue;
     cout << "\nCALCULATOR\nDylan Warren";
-    while(true){
-        cout << "\n\n--------------------"
+    while (true)
+    {
+        cout << "\n\n------------------------------"
                 "\n1. Add\n" <<
-                "2. Subtract\n" <<
-                "3. Divide\n" <<
-                "4. Multiply\n" <<
-                "5. Scientific calculator.\n" <<
-                "6. Exit\n" <<
-                "--------------------" <<
+                "\n2. Subtract\n" <<
+                "\n3. Divide\n" <<
+                "\n4. Multiply\n" <<
+                "\n5. Scientific calculator.\n" <<
+                "\n6. Exit\n" <<
+                "------------------------------" <<
                 "\nWhat would you like to do?(1-6): ";
                 cin >> choices;
-        if(choices==6)
-            {
+        if (choices == 6)
                 break;
-            }
-
         switch(choices)
         {
         case 1:
@@ -72,22 +70,22 @@ int main()
         default:
             cout << "\nInvalid input, please enter a numeric value(1-2-3, etc)" << endl;
         case 5:
-            while(sCalc)
+            sCalc = true;
+            while (sCalc)
             {
                 cout << "\n\n------------------------------"
                 << "\nMenu for scientific calculator" << endl << endl
                 << "1. Exponent(power)."
                 << "\n2. Root."
                 << "\n3. Logs."
-                << "\n4. Basic Calculator."
+                << "\n4. Trigonometric functions."
+                << "\n5. Basic Calculator."
                 << "\n------------------------------" << endl
                 << "What would you like to do?(1-4): ";
                 cin >> choiceTwo;
-                if (choiceTwo==4)
-                {
+                if (choiceTwo==5)
                     break;
-                }
-                switch(choiceTwo)
+                switch (choiceTwo)
                 {
                     case 1:
                         cout << "\nPlease enter the number being raised to a power: " << endl;
@@ -110,7 +108,7 @@ int main()
                     case 3:
                         cout << "\nIs it base 10?(1-Yes, 0-No): ";
                         cin >> B10;
-                        if(B10)
+                        if (B10)
                         {
                             cout << "\nLn(Base 10) of what number?: ";
                             cin >> logOf;
@@ -132,7 +130,49 @@ int main()
                         break;
                     default:
                         cout << "\nInvalid input please try again using numeric values.(1-2-3)" << endl;
-
+                    case 4:
+                        while (trigCalc)
+                        {
+                            cout << "\n------------------------------"
+                                 << "\n1. Sine."
+                                 << "\n2. Cosine."
+                                 << "\n3. Tangent."
+                                 << "\n4. Basic Calculator."
+                                 << "\n5. Scientific Calculator."
+                                 << "\n------------------------------"
+                                 << "\nWhat would you like to do?(1-5): ";
+                            cin >> trigChoice;
+                            if (trigChoice == 4)
+                            {
+                                sCalc = false;
+                                break;
+                            }
+                            if (trigChoice == 5)
+                                break;
+                            switch (trigChoice)
+                            {
+                                case 1:
+                                    cout << "Sine() of?: ";
+                                    cin >> trigValue;
+                                    trigResult = sin(trigValue);
+                                    cout << "Sine(" << trigValue << ") = " << trigResult << endl;
+                                    break;
+                                case 2:
+                                    cout << "Cosine() of?: ";
+                                    cin >> trigValue;
+                                    trigResult = cos(trigValue);
+                                    cout << "Cosine(" << trigValue << ") = " << trigResult << endl;
+                                    break;
+                                case 3:
+                                    cout << "Tangent() of?: ";
+                                    cin >> trigValue;
+                                    trigResult = tan(trigValue);
+                                    cout << "Tangent(" << trigValue << ") = " << trigResult << endl;
+                                    break;
+                                default:
+                                    cout << "\nThat's not a valid choice. Enter a numeric value. (1-5)" << endl;
+                            }
+                        }
                 }
             }
         }
